@@ -1,0 +1,33 @@
+.screen {
+  max-width: 640px;
+  margin: 0 auto;
+  padding: clamp(64px, 12vw, 120px) 0 0;
+  text-align: center;
+}
+
+.code {
+  color: var(--color-accent);
+  font-family: var(--font-mono);
+  font-size: clamp(3.5rem, 14vw, 6rem);
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: 0.08em;
+}
+
+.title {
+  margin-top: 16px;
+  font-size: clamp(1.4rem, 4vw, 1.8rem);
+}
+
+.text {
+  margin-top: 16px;
+  color: var(--color-muted);
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 32px;
+}
