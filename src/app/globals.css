@@ -1,18 +1,22 @@
 /*
  * デザインの土台
- * テーマは「夜のガレージ」。濃紺の背景に、レーシングカーのようなオレンジと
- * メーター照明のようなシアンを差し色として使う。
+ * テーマは「ガレージ」。ライトは昼のガレージ（温かい白と濃紺）、ダークは夜のガレージ
+ * （濃紺の背景に、レーシングカーのオレンジとメーター照明のシアン）。
+ * 文字色はどちらのテーマでも背景とのコントラスト比 4.5:1 以上（WCAG AA）にしている。
+ * 色を変えるときは、この先頭の変数だけを書き換えれば全ページに反映される。
  */
 :root {
-  --color-bg: #0e1117;
-  --color-surface: #161a23;
-  --color-surface-2: #1f2430;
-  --color-border: #2c3342;
-  --color-text: #e9ecf2;
-  --color-muted: #a3acbe;
-  --color-accent: #ff8a4c;
-  --color-accent-2: #5fd8cc;
-  --color-focus: #ffd166;
+  /* ライトテーマ（昼のガレージ） */
+  --color-bg: #f7f4ee; /* ページの背景 */
+  --color-surface: #ffffff; /* カードやフッターの背景 */
+  --color-surface-2: #ece6db; /* 画像の枠・コードなど一段沈んだ部分 */
+  --color-border: #d9d0c2; /* 区切り線・枠線 */
+  --color-text: #1a2030; /* 本文 */
+  --color-muted: #4d566a; /* 補足の文字 */
+  --color-accent: #b0430c; /* メインの差し色（オレンジ） */
+  --color-accent-2: #0a6b61; /* リンク・日付（シアン） */
+  --color-focus: #1d4ed8; /* キーボード操作中の枠 */
+  --color-glow: rgb(176 67 12 / 0.06);
 
   --font-sans:
     "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Noto Sans JP", "Yu Gothic UI", Meiryo, system-ui,
@@ -24,7 +28,41 @@
   --radius: 14px;
   --radius-sm: 8px;
 
+  color-scheme: light;
+}
+
+/* ダークテーマ（夜のガレージ）: 切り替えボタンで選んだとき */
+:root[data-theme="dark"] {
+  --color-bg: #0e1117;
+  --color-surface: #161a23;
+  --color-surface-2: #1f2430;
+  --color-border: #2c3342;
+  --color-text: #e9ecf2;
+  --color-muted: #a3acbe;
+  --color-accent: #ff8a4c;
+  --color-accent-2: #5fd8cc;
+  --color-focus: #ffd166;
+  --color-glow: rgb(255 138 76 / 0.08);
+
   color-scheme: dark;
+}
+
+/* まだ選んでいないときは、OS の設定に合わせる */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --color-bg: #0e1117;
+    --color-surface: #161a23;
+    --color-surface-2: #1f2430;
+    --color-border: #2c3342;
+    --color-text: #e9ecf2;
+    --color-muted: #a3acbe;
+    --color-accent: #ff8a4c;
+    --color-accent-2: #5fd8cc;
+    --color-focus: #ffd166;
+    --color-glow: rgb(255 138 76 / 0.08);
+
+    color-scheme: dark;
+  }
 }
 
 *,
@@ -47,7 +85,7 @@ body {
   display: flex;
   flex-direction: column;
   background:
-    radial-gradient(circle at 85% -10%, rgb(255 138 76 / 0.08), transparent 40%),
+    radial-gradient(circle at 85% -10%, var(--color-glow), transparent 40%),
     var(--color-bg);
   color: var(--color-text);
   font-family: var(--font-sans);
@@ -174,4 +212,31 @@ a {
 /* スキップリンクで本文へ移動したとき、main 全体に枠が出ないようにする */
 main:focus {
   outline: none;
+}
+
+/* 印刷するときはテーマに関係なく白い紙に黒い文字にし、メニューやボタンは出さない */
+@media print {
+  :root,
+  :root[data-theme] {
+    --color-bg: #fff;
+    --color-surface: #fff;
+    --color-surface-2: #eee;
+    --color-border: #ccc;
+    --color-text: #000;
+    --color-muted: #333;
+    --color-accent: #000;
+    --color-accent-2: #000;
+    color-scheme: light;
+  }
+
+  body {
+    background: #fff;
+  }
+
+  header,
+  footer,
+  .skip-link,
+  .button {
+    display: none !important;
+  }
 }

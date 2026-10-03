@@ -4,6 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useId, useState } from "react";
 import { navItems, site } from "@/libs/site";
+import ThemeToggle from "./ThemeToggle";
 import styles from "./Header.module.css";
 
 function isCurrent(pathname: string, href: string) {
@@ -39,16 +40,19 @@ export default function Header() {
           <span className={styles.logoMark} aria-hidden="true" />
           {site.name}
         </Link>
-        <button
-          type="button"
-          className={styles.toggle}
-          aria-expanded={open}
-          aria-controls={menuId}
-          onClick={() => setOpen((v) => !v)}
-        >
-          <span className={styles.toggleBars} aria-hidden="true" />
-          <span className="visually-hidden">{open ? "メニューを閉じる" : "メニューを開く"}</span>
-        </button>
+        <div className={styles.actions}>
+          <ThemeToggle />
+          <button
+            type="button"
+            className={styles.toggle}
+            aria-expanded={open}
+            aria-controls={menuId}
+            onClick={() => setOpen((v) => !v)}
+          >
+            <span className={styles.toggleBars} aria-hidden="true" />
+            <span className="visually-hidden">{open ? "メニューを閉じる" : "メニューを開く"}</span>
+          </button>
+        </div>
         <nav id={menuId} className={styles.nav} data-open={open} aria-label="メインメニュー">
           <ul className={styles.list}>
             {navItems.map((item) => {

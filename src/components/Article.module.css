@@ -5,11 +5,13 @@
 }
 
 .back {
-  display: inline-block;
-  margin-bottom: 28px;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3em;
+  min-height: 44px;
+  margin-bottom: 20px;
   color: var(--color-muted);
   font-size: 0.9rem;
-  text-decoration: none;
 }
 
 .back:hover {
