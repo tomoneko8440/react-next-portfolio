@@ -1,36 +1,69 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# 智猫のポートフォリオ
 
-## Getting Started
+## サイトURL
 
-First, run the development server:
+（公開後にURLを記入）
+
+## 概要
+
+自己紹介、制作した作品、ブログ記事を紹介するポートフォリオサイトです。作品と記事はmicroCMSで管理しています。
+
+## ページ構成
+
+| ページ | パス | 内容 |
+| --- | --- | --- |
+| TOP | `/` | 導入文、新着の作品と記事 |
+| プロフィール | `/profile` | 自己紹介、スキル、経歴、連絡先 |
+| 作品一覧 | `/works` | 公開中の作品 |
+| 作品詳細 | `/works/[id]` | 作品の説明と本文 |
+| ブログ一覧 | `/blogs` | 公開中の記事 |
+| ブログ詳細 | `/blogs/[id]` | 記事の本文 |
+
+## 使用技術
+
+- Next.js 14（App Router）
+- React 18
+- TypeScript
+- CSS Modules
+- microCMS（`microcms-js-sdk`）
+- Vercel
+
+## デザイン方針
+
+（自分の言葉で記入）生成りの背景に朱色のアクセントを合わせ、内容が読みやすい落ち着いた配色にしました。ダークモードとスマートフォンにも対応しています。
+
+## 選んだ理由
+
+（自分の言葉で記入）
+
+## 力を入れた点
+
+（自分の言葉で記入）
+
+## ローカルでの起動
 
 ```bash
+cp .env.example .env.local
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+`.env.local` にmicroCMSのサービスドメインとAPIキーを設定してから、http://localhost:3000 を開きます。
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 内容の変更
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+- 作品と記事: microCMSの管理画面（公開後、最大60秒ほどでサイトへ反映）
+- プロフィール、サイト名、メインカラー: [data/site.ts](data/site.ts)
 
-## Learn More
+## microCMSのAPI設定
 
-To learn more about Next.js, take a look at the following resources:
+`works` と `blogs` の2つをリスト形式で作成します。
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+| フィールドID | 種類 | 必須 | 内容 |
+| --- | --- | --- | --- |
+| `title` | テキストフィールド | はい | タイトル |
+| `content` | リッチエディタ | はい | 本文 |
+| `eyecatch` | 画像 | いいえ | サムネイル |
+| `eyecatchAlt` | テキストフィールド | いいえ | サムネイルの代替テキスト（未設定ならタイトル） |
+| `description` | テキストエリア | いいえ | 説明文（未設定なら本文の冒頭） |
+| `url` | テキストフィールド | いいえ | 作品のURL（`works` のみ） |
