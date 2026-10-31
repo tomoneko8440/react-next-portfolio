@@ -38,6 +38,23 @@ async function getDetail<T>(endpoint: string, contentId: string) {
   }
 }
 
+// APIが未作成のときは0件として扱い、ビルドを止めない
+async function emptyIfMissing<T>(request: Promise<T[]>) {
+  try {
+    return await request;
+  } catch (error) {
+    if (isMicroCMSRequestError(error) && error.status === 404) {
+      return [];
+    }
+    throw error;
+  }
+}
+
+// output: export は空配列だとビルドエラーになるので、0件ならダミーを返す（そのURLは404になる）
+export function toStaticParams(ids: string[]) {
+  return (ids.length > 0 ? ids : ["none"]).map((id) => ({ id }));
+}
+
 // 説明文が未設定のときは本文の冒頭を使う
 export function getDescription({ description, content }: Content) {
   if (description) {
@@ -54,6 +71,6 @@ export const getWorks = (limit = 100) => getList<Work>("works", limit);
 export const getWork = (id: string) => getDetail<Work>("works", id);
 export const getWorkIds = () => client.getAllContentIds({ endpoint: "works" });
 
-export const getBlogs = (limit = 100) => getList<Blog>("blogs", limit);
+export const getBlogs = (limit = 100) => emptyIfMissing(getList<Blog>("blogs", limit));
 export const getBlog = (id: string) => getDetail<Blog>("blogs", id);
-export const getBlogIds = () => client.getAllContentIds({ endpoint: "blogs" });
+export const getBlogIds = () => emptyIfMissing(client.getAllContentIds({ endpoint: "blogs" }));

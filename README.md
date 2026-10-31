@@ -2,7 +2,7 @@
 
 ## サイトURL
 
-（公開後にURLを記入）
+https://tomoneko8440.github.io/react-next-portfolio/
 
 ## 概要
 
@@ -26,7 +26,7 @@
 - TypeScript
 - CSS Modules
 - microCMS（`microcms-js-sdk`）
-- Vercel
+- GitHub Pages（GitHub Actionsでデプロイ）
 
 ## デザイン方針
 
@@ -52,7 +52,7 @@ npm run dev
 
 ## 内容の変更
 
-- 作品と記事: microCMSの管理画面（公開後、最大60秒ほどでサイトへ反映）
+- 作品と記事: microCMSの管理画面（サイトへの反映には再デプロイが必要。GitHubのActionsタブから「Deploy to GitHub Pages」を手動実行）
 - プロフィール、サイト名、メインカラー: [data/site.ts](data/site.ts)
 
 ## microCMSのAPI設定

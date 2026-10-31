@@ -1,15 +1,14 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import ContentDetail from "@/components/ContentDetail";
-import { getDescription, getWork, getWorkIds } from "@/lib/microcms";
+import { getDescription, getWork, getWorkIds, toStaticParams } from "@/lib/microcms";
 
 export const revalidate = 60;
 
 type Props = { params: { id: string } };
 
 export async function generateStaticParams() {
-  const ids = await getWorkIds();
-  return ids.map((id) => ({ id }));
+  return toStaticParams(await getWorkIds());
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
