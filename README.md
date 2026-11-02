@@ -21,13 +21,8 @@ https://tomoneko8440.github.io/react-next-portfolio/
 
 ## 使用技術
 
-<<<<<<< HEAD
 - Next.js 16（App Router）
 - React 19
-=======
-- Next.js 14（App Router）
-- React 18
->>>>>>> 4eb293e87d914bec09853461bc5e8a625a292990
 - TypeScript
 - CSS Modules
 - microCMS（`microcms-js-sdk`）

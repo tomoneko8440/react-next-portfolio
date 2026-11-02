@@ -1,18 +1,11 @@
 import { createClient, isMicroCMSRequestError } from "microcms-js-sdk";
 import type { MicroCMSImage, MicroCMSListContent } from "microcms-js-sdk";
 
-<<<<<<< HEAD
 const serviceDomain = process.env.MICROCMS_SERVICE_DOMAIN ?? "";
 const apiKey = process.env.MICROCMS_API_KEY ?? "";
 
 // キーが未設定のときは0件として扱い、ビルドを止めない
 const client = serviceDomain && apiKey ? createClient({ serviceDomain, apiKey }) : null;
-=======
-const client = createClient({
-  serviceDomain: process.env.MICROCMS_SERVICE_DOMAIN ?? "",
-  apiKey: process.env.MICROCMS_API_KEY ?? "",
-});
->>>>>>> 4eb293e87d914bec09853461bc5e8a625a292990
 
 type Content = MicroCMSListContent & {
   title: string;
@@ -28,12 +21,9 @@ export type Blog = Content;
 const LIST_FIELDS = "id,title,description,eyecatch,eyecatchAlt,content,publishedAt";
 
 async function getList<T>(endpoint: string, limit: number) {
-<<<<<<< HEAD
   if (!client) {
     return [];
   }
-=======
->>>>>>> 4eb293e87d914bec09853461bc5e8a625a292990
   const { contents } = await client.getList<T>({
     endpoint,
     queries: { limit, orders: "-publishedAt", fields: LIST_FIELDS },
@@ -41,7 +31,6 @@ async function getList<T>(endpoint: string, limit: number) {
   return contents;
 }
 
-<<<<<<< HEAD
 async function getIds(endpoint: string) {
   return client ? client.getAllContentIds({ endpoint }) : [];
 }
@@ -50,9 +39,6 @@ async function getDetail<T>(endpoint: string, contentId: string) {
   if (!client) {
     return null;
   }
-=======
-async function getDetail<T>(endpoint: string, contentId: string) {
->>>>>>> 4eb293e87d914bec09853461bc5e8a625a292990
   try {
     return await client.getListDetail<T>({ endpoint, contentId });
   } catch (error) {
@@ -94,16 +80,8 @@ export function getDescription({ description, content }: Content) {
 
 export const getWorks = (limit = 100) => getList<Work>("works", limit);
 export const getWork = (id: string) => getDetail<Work>("works", id);
-<<<<<<< HEAD
 export const getWorkIds = () => getIds("works");
 
 export const getBlogs = (limit = 100) => emptyIfMissing(getList<Blog>("blogs", limit));
 export const getBlog = (id: string) => getDetail<Blog>("blogs", id);
 export const getBlogIds = () => emptyIfMissing(getIds("blogs"));
-=======
-export const getWorkIds = () => client.getAllContentIds({ endpoint: "works" });
-
-export const getBlogs = (limit = 100) => emptyIfMissing(getList<Blog>("blogs", limit));
-export const getBlog = (id: string) => getDetail<Blog>("blogs", id);
-export const getBlogIds = () => emptyIfMissing(client.getAllContentIds({ endpoint: "blogs" }));
->>>>>>> 4eb293e87d914bec09853461bc5e8a625a292990
