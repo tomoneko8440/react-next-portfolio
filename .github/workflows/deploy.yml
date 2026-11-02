@@ -24,6 +24,7 @@ jobs:
           node-version: 20
           cache: npm
       - run: npm ci
+<<<<<<< HEAD
       - name: Build
         run: |
           [ -n "$MICROCMS_SERVICE_DOMAIN" ] || echo "::warning::MICROCMS_SERVICE_DOMAIN is not set"
@@ -34,6 +35,9 @@ jobs:
             grep -E "Error|status" build.log | head -5 | sed 's/^/::error::/'
           fi
           exit "$status"
+=======
+      - run: npm run build
+>>>>>>> 4eb293e87d914bec09853461bc5e8a625a292990
         env:
           BASE_PATH: /react-next-portfolio
           MICROCMS_SERVICE_DOMAIN: ${{ secrets.MICROCMS_SERVICE_DOMAIN }}

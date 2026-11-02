@@ -5,15 +5,23 @@ import { getDescription, getWork, getWorkIds, toStaticParams } from "@/lib/micro
 
 export const revalidate = 60;
 
+<<<<<<< HEAD
 type Props = { params: Promise<{ id: string }> };
+=======
+type Props = { params: { id: string } };
+>>>>>>> 4eb293e87d914bec09853461bc5e8a625a292990
 
 export async function generateStaticParams() {
   return toStaticParams(await getWorkIds());
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
+<<<<<<< HEAD
   const { id } = await params;
   const work = await getWork(id);
+=======
+  const work = await getWork(params.id);
+>>>>>>> 4eb293e87d914bec09853461bc5e8a625a292990
   if (!work) {
     notFound();
   }
@@ -25,8 +33,12 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 }
 
 export default async function WorkPage({ params }: Props) {
+<<<<<<< HEAD
   const { id } = await params;
   const work = await getWork(id);
+=======
+  const work = await getWork(params.id);
+>>>>>>> 4eb293e87d914bec09853461bc5e8a625a292990
   if (!work) {
     notFound();
   }

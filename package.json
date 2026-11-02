@@ -6,6 +6,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
+<<<<<<< HEAD
     "lint": "eslint ."
   },
   "dependencies": {
@@ -20,6 +21,22 @@
     "@types/react-dom": "^19.3.0",
     "eslint": "^9.39.5",
     "eslint-config-next": "^16.4.3",
+=======
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "microcms-js-sdk": "^3.6.0",
+    "next": "^14.2.35",
+    "react": "^18",
+    "react-dom": "^18"
+  },
+  "devDependencies": {
+    "@types/node": "^20",
+    "@types/react": "^18",
+    "@types/react-dom": "^18",
+    "eslint": "^8",
+    "eslint-config-next": "^14.2.35",
+>>>>>>> 4eb293e87d914bec09853461bc5e8a625a292990
     "typescript": "^5"
   }
 }
