@@ -16,12 +16,29 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const { theme } = site;
+
   return (
-    <html lang="ja" style={{ "--accent": site.accentColor } as CSSProperties}>
+    <html
+      lang="ja"
+      style={
+        {
+          "--light-background": theme.background,
+          "--light-surface": theme.surface,
+          "--light-foreground": theme.foreground,
+          "--light-muted": theme.muted,
+          "--light-border": theme.border,
+          "--accent": theme.accent,
+          "--dark-background": theme.dark.background,
+          "--dark-surface": theme.dark.surface,
+          "--dark-foreground": theme.dark.foreground,
+          "--dark-muted": theme.dark.muted,
+          "--dark-border": theme.dark.border,
+        } as CSSProperties
+      }
+    >
       <body>
-        <a href="#main" className={styles.skipLink}>
-          本文へ移動
-        </a>
+        <a href="#main" className={styles.skipLink}>{site.labels.common.skipToContent}</a>
         <Header />
         <main id="main" className={styles.main}>
           {children}

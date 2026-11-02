@@ -2,6 +2,7 @@ import Link from "next/link";
 import { getDescription } from "@/lib/microcms";
 import type { Blog, Work } from "@/lib/microcms";
 import { formatDate } from "@/lib/date";
+import { site } from "@/data/site";
 import Thumbnail from "./Thumbnail";
 import styles from "@/app/site.module.css";
 
@@ -12,7 +13,7 @@ type Props = {
 
 export default function ContentList({ basePath, contents }: Props) {
   if (contents.length === 0) {
-    return <p className={styles.muted}>まだ公開されているものはありません。</p>;
+    return <p className={styles.muted}>{site.labels.common.emptyList}</p>;
   }
 
   return (

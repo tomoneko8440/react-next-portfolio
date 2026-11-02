@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import ContentDetail from "@/components/ContentDetail";
 import { getDescription, getBlog, getBlogIds, toStaticParams } from "@/lib/microcms";
+import { site } from "@/data/site";
 
 export const revalidate = 60;
 
@@ -35,7 +36,7 @@ export default async function BlogPage({ params }: Props) {
     <ContentDetail
       content={blog}
       backHref="/blogs"
-      backLabel="ブログ一覧へ戻る"
+      backLabel={site.labels.common.backToBlogs}
     />
   );
 }

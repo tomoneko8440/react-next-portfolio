@@ -6,10 +6,10 @@ import { site } from "@/data/site";
 import styles from "@/app/site.module.css";
 
 const NAV_ITEMS = [
-  { href: "/", label: "Top" },
-  { href: "/profile", label: "Profile" },
-  { href: "/works", label: "Works" },
-  { href: "/blogs", label: "Blog" },
+  { href: "/", label: site.labels.nav.top },
+  { href: "/profile", label: site.labels.nav.profile },
+  { href: "/works", label: site.labels.nav.works },
+  { href: "/blogs", label: site.labels.nav.blogs },
 ];
 
 export default function Header() {

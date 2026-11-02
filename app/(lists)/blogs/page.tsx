@@ -1,13 +1,14 @@
 import type { Metadata } from "next";
 import ContentList from "@/components/ContentList";
 import { getBlogs } from "@/lib/microcms";
+import { site } from "@/data/site";
 import styles from "@/app/site.module.css";
 
 export const revalidate = 60;
 
 export const metadata: Metadata = {
-  title: "ブログ一覧",
-  description: "学んだことや制作の記録をまとめた記事です。",
+  title: site.labels.blogs.title,
+  description: site.labels.blogs.description,
 };
 
 export default async function BlogsPage() {
@@ -16,8 +17,8 @@ export default async function BlogsPage() {
   return (
     <>
       <div className={styles.pageHeader}>
-        <h1 className={styles.pageTitle}>ブログ一覧</h1>
-        <p className={styles.muted}>学んだことや制作の記録をまとめた記事です。</p>
+        <h1 className={styles.pageTitle}>{site.labels.blogs.title}</h1>
+        <p className={styles.muted}>{site.labels.blogs.description}</p>
       </div>
       <ContentList basePath="/blogs" contents={contents} />
     </>

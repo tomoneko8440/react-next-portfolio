@@ -1,9 +1,9 @@
 :root {
-  --background: #faf8f5;
-  --surface: #ffffff;
-  --foreground: #1f1d1a;
-  --muted: #68635b;
-  --border: #e4dfd7;
+  --background: var(--light-background);
+  --surface: var(--light-surface);
+  --foreground: var(--light-foreground);
+  --muted: var(--light-muted);
+  --border: var(--light-border);
   --accent-text: var(--accent);
   --max-width: 960px;
   color-scheme: light dark;
@@ -11,11 +11,11 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #16140f;
-    --surface: #211e18;
-    --foreground: #f3efe8;
-    --muted: #a9a297;
-    --border: #38332a;
+    --background: var(--dark-background);
+    --surface: var(--dark-surface);
+    --foreground: var(--dark-foreground);
+    --muted: var(--dark-muted);
+    --border: var(--dark-border);
     --accent-text: color-mix(in srgb, var(--accent) 60%, white);
   }
 }

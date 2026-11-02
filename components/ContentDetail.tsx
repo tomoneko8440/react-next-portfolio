@@ -1,6 +1,7 @@
 import Link from "next/link";
 import type { Blog, Work } from "@/lib/microcms";
 import { formatDate } from "@/lib/date";
+import { site } from "@/data/site";
 import Thumbnail from "./Thumbnail";
 import styles from "@/app/site.module.css";
 
@@ -51,7 +52,7 @@ export default function ContentDetail({
             rel="noreferrer"
             className={styles.button}
           >
-            作品を見る
+            {site.labels.common.viewWork}
           </a>
         </p>
       )}

@@ -1,6 +1,7 @@
 "use client";
 
 import styles from "./site.module.css";
+import { site } from "@/data/site";
 
 type Props = {
   reset: () => void;
@@ -9,10 +10,10 @@ type Props = {
 export default function Error({ reset }: Props) {
   return (
     <div className={styles.message}>
-      <h1 className={styles.pageTitle}>読み込みに失敗しました</h1>
-      <p className={styles.muted}>時間をおいて、もう一度お試しください。</p>
+      <h1 className={styles.pageTitle}>{site.labels.errors.errorTitle}</h1>
+      <p className={styles.muted}>{site.labels.errors.errorDescription}</p>
       <button type="button" onClick={reset} className={styles.button}>
-        再読み込み
+        {site.labels.errors.reload}
       </button>
     </div>
   );
