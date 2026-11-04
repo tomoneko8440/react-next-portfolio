@@ -20,7 +20,7 @@ export default async function BlogsPage() {
         <h1 className={styles.pageTitle}>{site.labels.blogs.title}</h1>
         <p className={styles.muted}>{site.labels.blogs.description}</p>
       </div>
-      <ContentList basePath="/blogs" contents={contents} />
+      <ContentList basePath="/blogs" contents={contents} headingLevel="h2" />
     </>
   );
 }

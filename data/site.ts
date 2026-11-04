@@ -46,6 +46,7 @@ type Site = {
       backToWorks: string;
       backToBlogs: string;
       viewWork: string;
+      themeToggle: string;
     };
     errors: {
       notFoundTitle: string;
@@ -65,23 +66,23 @@ type Site = {
 
 export const site: Site = {
   // ブラウザのタブや検索結果に表示される情報
-  title: "智猫のポートフォリオ",
-  description: "智猫のプロフィールと制作実績を紹介するポートフォリオサイトです。",
+  title: "藤居　知樹のポートフォリオ",
+  description: "藤居　知樹のプロフィールと制作実績を紹介するポートフォリオサイトです。",
 
   // サイトの色（カラーコードで指定）
   theme: {
-    background: "#faf8f5",
-    surface: "#ffffff",
-    foreground: "#1f1d1a",
-    muted: "#68635b",
-    border: "#e4dfd7",
-    accent: "#d9480f",
-    dark: {
-      background: "#16140f",
-      surface: "#211e18",
-      foreground: "#f3efe8",
-      muted: "#a9a297",
-      border: "#38332a",
+    background: "#edf1da", // 背景色
+    surface: "#ffffff", // コンテンツの背景色
+    foreground: "#1f1d1a",  // 文字色
+    muted: "#68635b", // 薄い文字色
+    border: "#000000",    // 枠線の色
+    accent: "#d9480f", // アクセントカラー
+    dark: { // ダークモードの色
+      background: "#16140f", // 背景色
+      surface: "#211e18", // コンテンツの背景色
+      foreground: "#f3efe8", // 文字色
+      muted: "#a9a297", // 薄い文字色
+      border: "#38332a", // 枠線の色
     },
   },
 
@@ -117,6 +118,7 @@ export const site: Site = {
       backToWorks: "作品一覧へ戻る",
       backToBlogs: "ブログ一覧へ戻る",
       viewWork: "作品を見る",
+      themeToggle: "ライト/ダークモードを切り替え",
     },
     errors: {
       notFoundTitle: "ページが見つかりません",
@@ -130,34 +132,37 @@ export const site: Site = {
 
   // TOPページの上部
   hero: {
-    name: "智猫",
+    name: "藤居 知樹",
     role: "Webエンジニア",
-    catchphrase: "ここにキャッチコピーを入れます。",
+    catchphrase: "Web開発の基礎を学んでいる学生です。将来はホワイトハッカーとして活躍することを目指しています。",
   },
 
   // 自己紹介（1要素が1段落）
   about: [
-    "ここに自己紹介を入れます。これまでの経験や得意なことを書きましょう。",
-    "段落を増やしたいときは、この行をコピーして追加します。",
+    "藤居知樹です。京都デザイン&テクノロジー専門学校でPythonやWeb開発の基礎を学んでいます。",
+    "年齢-19歳",
+    "趣味-ゲーム、アニメ、映画鑑賞",
+    "将来の夢-ホワイトハッカーとして活躍すること",
   ],
 
   // スキル（グループを増やす場合は { } ごとコピー）
   skills: [
-    { category: "フロントエンド", items: ["HTML", "CSS", "TypeScript", "React", "Next.js"] },
+    { category: "フロントエンド", items: ["HTML", "CSS", "TypeScript", "React", "Next.js","Python"] },
     { category: "ツール", items: ["Git", "GitHub", "VS Code"] },
+    { category: "資格", items: ["MOS Excel"] },
   ],
 
   // 経歴
   career: [
-    { period: "20XX年 - 現在", title: "会社名・学校名など", description: "ここに内容を入れます。" },
-    { period: "20XX年 - 20XX年", title: "会社名・学校名など", description: "ここに内容を入れます。" },
+    { period: "2026年 - 現在", title: "京都デザイン&テクノロジー専門学校", description: "PythonやWeb開発の基礎を学んでいます。" },
+    { period: "2023年 - 2026年", title: "屋久島おおぞら高等学校", description: "通信制の学校で建築系の勉強をしていました" },
   ],
 
   // 連絡先
   contact: {
     message: "お仕事のご相談やご連絡は、こちらからお願いします。",
     links: [
-      { label: "メール", url: "mailto:your-email@example.com" },
+      { label: "メール", url: "mailto:exsample@example.com" },
       { label: "GitHub", url: "https://github.com/tomoneko8440" },
     ],
   },

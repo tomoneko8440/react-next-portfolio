@@ -20,7 +20,7 @@ export default async function WorksPage() {
         <h1 className={styles.pageTitle}>{site.labels.works.title}</h1>
         <p className={styles.muted}>{site.labels.works.description}</p>
       </div>
-      <ContentList basePath="/works" contents={contents} />
+      <ContentList basePath="/works" contents={contents} headingLevel="h2" />
     </>
   );
 }

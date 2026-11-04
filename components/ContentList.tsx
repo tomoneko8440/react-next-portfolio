@@ -9,9 +9,15 @@ import styles from "@/app/site.module.css";
 type Props = {
   basePath: "/works" | "/blogs";
   contents: (Work | Blog)[];
+  // 見出しの階層を飛ばさないよう、置く場所に合わせて変える
+  headingLevel?: "h2" | "h3";
 };
 
-export default function ContentList({ basePath, contents }: Props) {
+export default function ContentList({
+  basePath,
+  contents,
+  headingLevel: Heading = "h3",
+}: Props) {
   if (contents.length === 0) {
     return <p className={styles.muted}>{site.labels.common.emptyList}</p>;
   }
@@ -28,7 +34,7 @@ export default function ContentList({ basePath, contents }: Props) {
               sizes="(max-width: 640px) 100vw, 300px"
             />
             <div className={styles.cardBody}>
-              <h3 className={styles.cardTitle}>{content.title}</h3>
+              <Heading className={styles.cardTitle}>{content.title}</Heading>
               <p className={styles.cardDescription}>
                 {getDescription(content)}
               </p>

@@ -31,6 +31,8 @@
 }
 
 .nav a {
+  display: inline-block;
+  padding: 4px 0;
   color: var(--muted);
   text-decoration: none;
 }
@@ -42,6 +44,63 @@
 
 .nav a[aria-current="page"] {
   font-weight: 700;
+}
+
+.headerRight {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 4px 20px;
+}
+
+.themeToggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border: 1px solid var(--border);
+  border-radius: 50%;
+  background: var(--surface);
+  color: var(--muted);
+  cursor: pointer;
+}
+
+.themeToggle:hover {
+  color: var(--accent-text);
+}
+
+.themeToggle svg {
+  width: 18px;
+  height: 18px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+/* ライト表示中は月（ダークへ）、ダーク表示中は太陽（ライトへ）を表示 */
+.iconSun {
+  display: none;
+}
+
+@media (prefers-color-scheme: dark) {
+  :global(:root:not([data-theme="light"])) .iconSun {
+    display: block;
+  }
+
+  :global(:root:not([data-theme="light"])) .iconMoon {
+    display: none;
+  }
+}
+
+:global(:root[data-theme="dark"]) .iconSun {
+  display: block;
+}
+
+:global(:root[data-theme="dark"]) .iconMoon {
+  display: none;
 }
 
 .main {
@@ -92,7 +151,7 @@
 
 .skills {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(260px, 100%), 1fr));
   gap: 32px;
 }
 
@@ -117,7 +176,7 @@
 
 .cards {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(min(260px, 100%), 1fr));
   gap: 24px;
 }
 
@@ -328,7 +387,7 @@
 .button {
   display: inline-block;
   padding: 10px 24px;
-  background: var(--accent);
+  background: var(--accent-button);
   border-radius: 8px;
   border: 0;
   color: #ffffff;

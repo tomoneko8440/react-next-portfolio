@@ -4,20 +4,38 @@
   --foreground: var(--light-foreground);
   --muted: var(--light-muted);
   --border: var(--light-border);
-  --accent-text: var(--accent);
+  /* そのままのアクセント色だと背景や白文字とのコントラストが足りないため、少し暗くして使う */
+  --accent-text: color-mix(in srgb, var(--accent) 85%, black);
+  --accent-button: color-mix(in srgb, var(--accent) 85%, black);
   --max-width: 960px;
   color-scheme: light dark;
 }
 
+/* 切り替えボタンで選んだテーマを優先し、未選択ならOSの設定に合わせる */
+:root[data-theme="light"] {
+  color-scheme: light;
+}
+
 @media (prefers-color-scheme: dark) {
-  :root {
+  :root:not([data-theme="light"]) {
     --background: var(--dark-background);
     --surface: var(--dark-surface);
     --foreground: var(--dark-foreground);
     --muted: var(--dark-muted);
     --border: var(--dark-border);
     --accent-text: color-mix(in srgb, var(--accent) 60%, white);
+    color-scheme: dark;
   }
+}
+
+:root[data-theme="dark"] {
+  --background: var(--dark-background);
+  --surface: var(--dark-surface);
+  --foreground: var(--dark-foreground);
+  --muted: var(--dark-muted);
+  --border: var(--dark-border);
+  --accent-text: color-mix(in srgb, var(--accent) 60%, white);
+  color-scheme: dark;
 }
 
 * {

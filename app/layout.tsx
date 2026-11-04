@@ -2,6 +2,7 @@ import type { CSSProperties } from "react";
 import type { Metadata } from "next";
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
+import { themeScript } from "@/components/ThemeToggle";
 import { site } from "@/data/site";
 import "./globals.css";
 import styles from "./site.module.css";
@@ -21,6 +22,7 @@ export default function RootLayout({
   return (
     <html
       lang="ja"
+      suppressHydrationWarning
       style={
         {
           "--light-background": theme.background,
@@ -37,6 +39,9 @@ export default function RootLayout({
         } as CSSProperties
       }
     >
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: themeScript }} />
+      </head>
       <body>
         <a href="#main" className={styles.skipLink}>{site.labels.common.skipToContent}</a>
         <Header />
