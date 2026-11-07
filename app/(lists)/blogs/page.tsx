@@ -16,6 +16,11 @@ export default async function BlogsPage() {
 
   return (
     <>
+      <div className={styles.heroBg} aria-hidden="true">
+        <span />
+        <span />
+        <span />
+      </div>
       <div className={styles.pageHeader}>
         <h1 className={styles.pageTitle}>{site.labels.blogs.title}</h1>
         <p className={styles.muted}>{site.labels.blogs.description}</p>
