@@ -20,7 +20,7 @@ export default function Header() {
     <header className={styles.header}>
       <div className={styles.headerInner}>
         <Link href="/" className={styles.logo}>
-          {site.hero.name}
+          {site.labels.common.skipToContent}
         </Link>
         <div className={styles.headerRight}>
           <nav aria-label="メインメニュー">
