@@ -47,6 +47,7 @@ type Site = {
       backToBlogs: string;
       viewWork: string;
       themeToggle: string;
+      backToTop: string;
     };
     errors: {
       notFoundTitle: string;
@@ -119,6 +120,7 @@ export const site: Site = {
       backToBlogs: "ブログ一覧へ戻る",
       viewWork: "作品を見る",
       themeToggle: "ライト/ダークモードを切り替え",
+      backToTop: "ページの先頭へ戻る",
     },
     errors: {
       notFoundTitle: "ページが見つかりません",

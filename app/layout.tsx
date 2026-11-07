@@ -1,7 +1,12 @@
-import type { CSSProperties } from "react";
+import { ViewTransition, type CSSProperties } from "react";
 import type { Metadata } from "next";
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
+import BackToTop from "@/components/BackToTop";
+import CardTilt from "@/components/CardTilt";
+import ScrollReveal from "@/components/ScrollReveal";
+import ScrollToTop from "@/components/ScrollToTop";
+import TimelineProgress from "@/components/TimelineProgress";
 import { themeScript } from "@/components/ThemeToggle";
 import { site } from "@/data/site";
 import "./globals.css";
@@ -22,6 +27,8 @@ export default function RootLayout({
   return (
     <html
       lang="ja"
+      // ページ移動のときはスムーズスクロールを使わず、すぐ切り替える
+      data-scroll-behavior="smooth"
       suppressHydrationWarning
       style={
         {
@@ -46,9 +53,17 @@ export default function RootLayout({
         <a href="#main" className={styles.skipLink}>{site.labels.common.skipToContent}</a>
         <Header />
         <main id="main" className={styles.main}>
-          {children}
+          {/* ページ移動のときに中身をクロスフェードさせる */}
+          <ViewTransition update="page-fade" default="none">
+            {children}
+          </ViewTransition>
         </main>
         <Footer />
+        <BackToTop />
+        <ScrollReveal />
+        <ScrollToTop />
+        <CardTilt />
+        <TimelineProgress />
       </body>
     </html>
   );

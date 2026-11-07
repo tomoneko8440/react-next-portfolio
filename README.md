@@ -40,6 +40,41 @@ https://tomoneko8440.github.io/react-next-portfolio/
 
 （自分の言葉で記入）
 
+## 生成AIの利用
+
+### 利用した主な箇所
+
+生成AI（Claude Code）を、次のコード案の作成に利用しました。
+
+| 内容 | 主なファイル |
+| --- | --- |
+| 表示時・スクロール時にふわっと表示するアニメーション | [components/ScrollReveal.tsx](components/ScrollReveal.tsx)、[app/site.module.css](app/site.module.css)、[app/globals.css](app/globals.css) |
+| ホバー時の動き（カード、ボタン、ナビの下線、テーマ切替ボタンなど） | [app/site.module.css](app/site.module.css) |
+| ページ移動時のクロスフェード（ReactのViewTransition） | [app/layout.tsx](app/layout.tsx)、[app/globals.css](app/globals.css) |
+| トップへ戻るボタン | [components/BackToTop.tsx](components/BackToTop.tsx) |
+| 名前のタイピング演出 | [components/TypingName.tsx](components/TypingName.tsx) |
+| トップ背景の動く図形 | [app/(lists)/page.tsx](app/(lists)/page.tsx)、[app/site.module.css](app/site.module.css) |
+| マウスに合わせてカードが傾く演出 | [components/CardTilt.tsx](components/CardTilt.tsx) |
+| スキルタグを順番に表示する演出 | [app/profile/page.tsx](app/profile/page.tsx) |
+| 経歴のタイムライン線 | [components/TimelineProgress.tsx](components/TimelineProgress.tsx) |
+| ページ移動時に一番上へ戻す処理 | [components/ScrollToTop.tsx](components/ScrollToTop.tsx) |
+
+<!-- ほかにも生成AIを使った箇所（サイトの初期作成、エラー調査、文章の推敲など）があれば上の表に追加する -->
+
+### 自分で確認・修正した内容
+
+（自分の言葉で記入）
+
+<!--
+書く内容の例（実際にやったことだけを書く）:
+- npm run dev で各ページを開き、アニメーションが動くか確認した
+- スマートフォン幅・ダークモードでも表示が崩れないか確認した
+- OSの「視差効果を減らす」をオンにしてアニメーションが止まるか確認した
+- ページ移動のたびに一番上に戻るか確認した
+- 速さや色など、自分で調整した値
+- 各コードが何をしているかを読んで理解した点（例: IntersectionObserver で画面に入った要素に data-revealed を付けている）
+-->
+
 ## ローカルでの起動
 
 ```bash

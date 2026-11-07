@@ -1,3 +1,4 @@
+import type { CSSProperties } from "react";
 import Link from "next/link";
 import { getDescription } from "@/lib/microcms";
 import type { Blog, Work } from "@/lib/microcms";
@@ -24,9 +25,17 @@ export default function ContentList({
 
   return (
     <ul className={styles.cards}>
-      {contents.map((content) => (
-        <li key={content.id}>
-          <Link href={`${basePath}/${content.id}`} className={styles.card}>
+      {contents.map((content, index) => (
+        <li
+          key={content.id}
+          data-reveal
+          style={{ "--i": index % 3 } as CSSProperties}
+        >
+          <Link
+            href={`${basePath}/${content.id}`}
+            className={styles.card}
+            data-tilt
+          >
             <Thumbnail
               title={content.title}
               image={content.eyecatch}
